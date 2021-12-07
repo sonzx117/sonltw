@@ -8,6 +8,8 @@ package control;
 import dao.AccountDao;
 import entity.Account;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,19 +37,19 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            String email = request.getParameter("email");
+           String email = request.getParameter("email");
             String password = request.getParameter("password");
             AccountDao acc = new AccountDao();
-            Account a = acc.login(email, password);
-            if (a == null) {
+            Account user = acc.login(email, password);
+           if (user == null) {
                 request.setAttribute("mess", "Wrong user or pass");
                 response.sendRedirect("login.jsp");
             } else {
                 HttpSession session = request.getSession();
-                request.getSession().setAttribute("acc", a);
+                request.getSession().setAttribute("auth", user);
                 response.sendRedirect("Home");
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
         }
     }
 
@@ -64,6 +66,7 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
     }
 
     /**
@@ -77,7 +80,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         processRequest(request, response);
     }
 
     /**

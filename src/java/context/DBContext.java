@@ -22,11 +22,11 @@ public class DBContext {
     /*Insert your other code right after this comment*/
    
     /*Change/update information of your database connection, DO NOT change name of instance variables in this class*/
-    private final String serverName = "localhost";
+    private final String serverName = "mssql-60799-0.cloudclusters.net";
     private final String dbName = "bailop";
-    private final String portNumber = "1433";
-    private final String userID = "sa";
-    private final String password = "123";
+    private final String portNumber = "19023";
+    private final String userID = "loc";
+    private final String password = "Loc662001";
      public static void main(String[] args) throws Exception {
         DBContext db=new DBContext();
         db.getConnection();

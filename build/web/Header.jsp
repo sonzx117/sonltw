@@ -8,13 +8,12 @@
 <%@page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    Account acc = (Account) request.getSession().getAttribute("acc");
-    if (acc != null) {
-        request.setAttribute("person", acc);
-    }
-
-%>
+	<%
+	Account auth = (Account) request.getSession().getAttribute("auth");
+	if (auth != null) {
+		response.sendRedirect("Home.jsp");
+	}
+	%>
 <!-- header -->
 <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
     <div class="container">
@@ -47,7 +46,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="cart">Cart <span class="badge badge-danger">${carts.size()}</span> </a></li>           
             <%        
-                if (acc != null) {
+                if (auth != null) {
             %>
             <li class="nav-item">
                 <a class="nav-link" href="Logout">Logout</a></li>

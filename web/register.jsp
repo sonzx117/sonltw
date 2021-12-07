@@ -64,7 +64,7 @@
                                         </span>
                                     </div>
                                     <input class="form-control" type="password" placeholder="password"
-                                        name="kh_matkhau">
+                                        name="password">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -73,7 +73,7 @@
                                         </span>
                                     </div>
                                     <input class="form-control" type="password" placeholder="repassword"
-                                        name="kh_rematkhau">
+                                        name="repassword">
                                 </div>
                                 <button class="btn btn-block btn-success" name="btnDangKy">Tạo tài khoản</button>
                             </div>

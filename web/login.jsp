@@ -3,8 +3,12 @@
     Created on : Oct 29, 2021, 7:40:20 PM
     Author     : DELL VOSTRO
 --%>
+<%@page import="context.DBContext" %>
+<%@page import="entity.Account"%>
+<%@page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html lang="vi" class="h-100">
 

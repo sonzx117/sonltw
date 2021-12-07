@@ -32,15 +32,15 @@ public class LogoutController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            if (request.getSession().getAttribute("acc") != null) {
-                request.getSession().removeAttribute("acc");
-                response.sendRedirect("login.jsp");
-            } else {
-                response.sendRedirect("Home");
-            }
-        } 
+        //response.setContentType("text/html;charset=UTF-8");
+        //try (PrintWriter out = response.getWriter()) {
+           // if (request.getSession().getAttribute("acc") != null) {
+               // request.getSession().removeAttribute("acc");
+              //  response.sendRedirect("login.jsp");
+           // } else {
+                //response.sendRedirect("Home");
+            //}
+        //} 
 
     }
 
@@ -56,6 +56,18 @@ public class LogoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            response.setContentType("text/html;charset=UTF-8");
+		try (PrintWriter out = response.getWriter()) {
+			if(request.getSession().getAttribute("auth")!=null) {
+				request.getSession().removeAttribute("auth");
+                                request.getSession().removeAttribute("carts");
+				response.sendRedirect("login.jsp");
+			}else {
+				response.sendRedirect("Home.jsp");
+			}
+
+		}      
+        
     }
 
     /**
@@ -69,7 +81,7 @@ public class LogoutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            doGet(request, response);
     }
 
     /**
